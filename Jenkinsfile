@@ -1,6 +1,7 @@
 @Library("dynatrace@events-v2")
 def event = new com.dynatrace.ace.Event()
-def selector = "type(PROCESS_GROUP_INSTANCE),entityName(nginx)"
+
+def selector = "type(PROCESS_GROUP_INSTANCE),tag(Jenkins)"
 
 pipeline {
     agent any
@@ -14,13 +15,13 @@ pipeline {
                 script {
                     def status = event.pushDynatraceEvent (
                       eventType: "CUSTOM_DEPLOYMENT",
-					            title: "New Deployment: ${env.JOB_NAME}",
+		      title: "New Deployment: ${env.JOB_NAME}",
                       entitySelector: selector,
-                      porperties : [
+                      porperties : {
                           "Jenkins JOB_NAME": "${env.JOB_NAME}",
                           "Jenkins BUILD_NUMBER": "${env.BUILD_NUMBER}"
                           "dt.event.deployment.name":"${env.JOB_NAME}",
-						              "dt.event.deployment.version": "1.1",
+			  "dt.event.deployment.version": "1.1",
                           "dt.event.deployment.release_stage": "production" ,
                           "dt.event.deployment.release_product": "frontend",
                           "dt.event.deployment.release_build_version": "123",
@@ -30,7 +31,7 @@ pipeline {
                           "change-request": "<Change-Request-ID>",
                           "dt.event.deployment.remediation_action_link": "https://url.com",
                           "dt.event.is_rootcause_relevant": true
-                      ]
+		      }
                     )
                   }
             }
