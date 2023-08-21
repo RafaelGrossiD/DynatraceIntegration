@@ -1,4 +1,4 @@
-@Library("dynatrace@v1.1")
+@Library("dynatrace@events-v2")
 def event = new com.dynatrace.ace.Event()
 
 def tagMatchRules = [[
