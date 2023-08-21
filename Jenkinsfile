@@ -7,12 +7,12 @@ pipeline {
 stage('Execute Request') {
       steps {
          script {
-		sh "curl -X 'POST' \
-		  '${DT_TENANT_URL}/api/v2/events/ingest' \
+				sh "curl -X 'POST' \
+		  '${DT_TENANT_URL}api/v2/events/ingest' \
 		  -H 'accept: application/json; charset=utf-8' \
-		  -H 'Authorization: ${DT_API_TOKEN}' \
+		  -H 'Authorization: Api-Token ${DT_API_TOKEN}' \
 		  -H 'Content-Type: application/json; charset=utf-8' \
-		  -d '{
+		  {
 		  "title" : "Easytravel",
 		  "eventType": "CUSTOM_DEPLOYMENT",
 		  "entitySelector": "type(process_group_instance),tag(Jenkins)",
@@ -23,8 +23,10 @@ stage('Execute Request') {
 		    "dt.event.deployment.version": "4.0",
 		    "dt.event.deployment.release_stage": "prd", 
 		    "dt.event.deployment.release_product": "easytravel frontend - CoachingSession"
-		  }'"
+		   }
+		}'
+		"
             }
       }
-}
+ }
 }	
