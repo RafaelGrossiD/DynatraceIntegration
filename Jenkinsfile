@@ -17,7 +17,7 @@ pipeline {
                       eventType: "CUSTOM_DEPLOYMENT",
 		      title: "New Deployment: ${env.JOB_NAME}",
                       entitySelector: selector,
-                      porperties : {
+                      properties: [
                           "Jenkins JOB_NAME": "${env.JOB_NAME}",
                           "Jenkins BUILD_NUMBER": "${env.BUILD_NUMBER}"
                           "dt.event.deployment.name":"${env.JOB_NAME}",
@@ -31,7 +31,7 @@ pipeline {
                           "change-request": "<Change-Request-ID>",
                           "dt.event.deployment.remediation_action_link": "https://url.com",
                           "dt.event.is_rootcause_relevant": true
-		      }
+		      ]
                     )
                   }
             }
