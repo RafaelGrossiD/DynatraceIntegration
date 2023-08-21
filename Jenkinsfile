@@ -1,4 +1,11 @@
- def dyna_json = """
+pipeline {
+    agent any
+    environment {
+      DT_TENANT_URL = credentials('DT_TENANT_URL')
+    	DT_API_TOKEN = credentials('DT_API_TOKEN')
+    }
+}
+def dyna_json = """
 {
   "title" : "Easytravel",
   "eventType": "CUSTOM_DEPLOYMENT",
@@ -14,4 +21,4 @@
 }
 """
 
-def dyna_request = httpRequest contentType: 'APPLICATION_JSON',    customHeaders: [[maskValue: true, name: 'Authorization', value: "Api-Token ${env.DT_API_TOKEN}"]], httpMode: 'POST', requestBody: dyna_json, responseHandle: 'STRING', url: "${env.DT_TENANT_URL}api/v2/events/ingest", validResponseCodes: "100:404"
+def dyna_request = httpRequest contentType: 'APPLICATION_JSON',    customHeaders: [[maskValue: true, name: 'Authorization', value: "Api-Token ${DT_API_TOKEN}"]], httpMode: 'POST', requestBody: dyna_json, responseHandle: 'STRING', url: "${DT_TENANT_URL}api/v2/events/ingest", validResponseCodes: "100:404"
