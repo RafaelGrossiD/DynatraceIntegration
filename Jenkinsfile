@@ -31,6 +31,5 @@ def dyna_request = httpRequest contentType: 'APPLICATION_JSON',    customHeaders
         }
                                         
     }
-}
 
 
