@@ -25,11 +25,11 @@ def dyna_json = """
 """
 
 def dyna_request = httpRequest contentType: 'APPLICATION_JSON',    customHeaders: [[maskValue: true, name: 'Authorization', value: "Api-Token ${env.DT_API_TOKEN}"]], httpMode: 'POST', requestBody: dyna_json, responseHandle: 'STRING', url: "${env.DT_TENANT_URL}/api/v2/events/ingest", validResponseCodes: "100:404"
-                    )
                   }
             }
         }
                                         
     }
+}    
 
 
