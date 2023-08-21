@@ -1,10 +1,3 @@
-pipeline {
-    agent any
-    environment {
-      DT_TENANT_URL = credentials('DT_TENANT_URL')
-    	DT_API_TOKEN = credentials('DT_API_TOKEN')
-    }
-}
 def dyna_json = """
 {
   "title" : "Easytravel",
@@ -21,4 +14,4 @@ def dyna_json = """
 }
 """
 
-def dyna_request = httpRequest contentType: 'APPLICATION_JSON',    customHeaders: [[maskValue: true, name: 'Authorization', value: "Api-Token ${DT_API_TOKEN}"]], httpMode: 'POST', requestBody: dyna_json, responseHandle: 'STRING', url: "${DT_TENANT_URL}api/v2/events/ingest", validResponseCodes: "100:404"
+def dyna_request = httpRequest contentType: 'APPLICATION_JSON',    customHeaders: [[maskValue: true, name: 'Authorization', value: "Api-Token ${env.DT_API_TOKEN}"]], httpMode: 'POST', requestBody: dyna_json, responseHandle: 'STRING', url: "https://dbg33121.sprint.dynatracelabs.com/api/v2/events/ingest", validResponseCodes: "100:404"
