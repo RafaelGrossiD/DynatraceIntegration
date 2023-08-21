@@ -15,12 +15,9 @@ pipeline {
                 script {
                     def status = event.pushDynatraceEvent (
                       eventType: "CUSTOM_DEPLOYMENT",
-		      title: "New Deployment: ${env.JOB_NAME}",
+		      title: "New Deployment",
                       entitySelector: selector,
                       properties: [
-                          "Jenkins JOB_NAME": ${env.JOB_NAME},
-                          "Jenkins BUILD_NUMBER": ${env.BUILD_NUMBER},
-                          "dt.event.deployment.name": ${env.JOB_NAME},
 			  "dt.event.deployment.version": "1.1",
                           "dt.event.deployment.release_stage": "production",
                           "dt.event.deployment.release_product": "frontend",
