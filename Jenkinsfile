@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
       DT_TENANT_URL = credentials('DT_TENANT_URL')
-    	DT_API_TOKEN = credentials('DT_API_TOKEN')
+      DT_API_TOKEN = credentials('DT_API_TOKEN')
     }
     stages {
         stage("CUSTOM_DEPLOYMENT") {
@@ -24,7 +24,7 @@ def dyna_json = """
 }
 """
 
-def dyna_request = httpRequest contentType: 'APPLICATION_JSON',    customHeaders: [[maskValue: false, name: 'Authorization', value: "Api-Token ${env.DT_API_TOKEN}"]], httpMode: 'POST', requestBody: dyna_json, responseHandle: 'STRING', url: "${env.DT_TENANT_URL}/api/v2/events/ingest", validResponseCodes: "100:404"
+def dyna_request = httpRequest contentType: 'APPLICATION_JSON',    customHeaders: [[maskValue: true, name: 'Authorization', value: 'Api-Token $DT_API_TOKEN']], httpMode: 'POST', requestBody: dyna_json, responseHandle: 'STRING', url: "${DT_TENANT_URL}/api/v2/events/ingest", validResponseCodes: "100:404"
                   }
             }
         }
