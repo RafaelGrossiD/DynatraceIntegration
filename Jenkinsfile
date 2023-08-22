@@ -24,8 +24,8 @@ def dyna_json = """
 }
 """
 
-def dyna_request = httpRequest contentType: 'APPLICATION_JSON', accept: 'APPLICATION_JSON', customHeaders: [[maskValue: false, name: 'Authorization', value: "${env.DT_API_TOKEN}"]], httpMode: 'POST', requestBody: dyna_json, responseHandle: 'STRING', url: 'https://dqj20161.dev.dynatracelabs.com/api/v2/events/ingest', validResponseCodes: "100:404"
-echo 'https://dqj20161.dev.dynatracelabs.com/api/v2/events/ingest'
+def dyna_request = httpRequest contentType: 'APPLICATION_JSON', accept: 'APPLICATION_JSON', customHeaders: [[maskValue: false, name: 'Authorization', value: "${env.DT_API_TOKEN}"]], httpMode: 'POST', requestBody: dyna_json, responseHandle: 'STRING', url: "${env.DT_TENANT_URL}", validResponseCodes: "100:404"
+echo "${env.DT_TENANT_URL}"
 echo "${env.DT_API_TOKEN}"
                   }
             }
