@@ -1,4 +1,4 @@
-nvpipeline {
+pipeline {
     agent any
     environment {
       DT_TENANT_URL = credentials('DT_TENANT_URL')
