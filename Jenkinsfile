@@ -17,7 +17,7 @@ def dyna_json = """
     "dt.event.deployment.name": "Easytravel",
     "dt.event.deployment.project": "Project X",
     "dt.event.deployment.remediation_action_link": "https://url",
-    "dt.event.deployment.version": "4.0",
+    "dt.event.deployment.version": "5.0",
     "dt.event.deployment.release_stage": "prd", 
     "dt.event.deployment.release_product": "easytravel frontend - CoachingSession"
    }
