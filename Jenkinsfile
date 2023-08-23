@@ -14,9 +14,8 @@ def dyna_json = """
   "eventType": "CUSTOM_DEPLOYMENT",
   "entitySelector": "type(process_group_instance),tag(Jenkins)",
   "properties": {
-   // "Jenkins JOB_NAME": "${env.JOB_NAME}",
-   // "Jenkins BUILD_NUMBER": "${env.BUILD_NUMBER}"
-   // "dt.event.deployment.name":"${env.JOB_NAME}",
+    "Jenkins.JOB_NAME": "${env.JOB_NAME}",
+    "Jenkins.BUILD_NUMBER": "${env.BUILD_NUMBER}"
     "dt.event.deployment.project": "Project CICD",
     "dt.event.deployment.remediation_action_link": "https://urlexample",
     "dt.event.deployment.version": "5.0",
@@ -27,11 +26,12 @@ def dyna_json = """
 """
 
 def dyna_request = httpRequest contentType: 'APPLICATION_JSON', customHeaders: [[maskValue: false, name: 'Authorization', value: "${env.DT_API_TOKEN}"]], httpMode: 'POST', requestBody: dyna_json, responseHandle: 'STRING', url: "${env.DT_TENANT_URL}", validResponseCodes: "100:404"
-                  }
-            }
+echo "${env.JOB_NAME}"
+echo "${env.BUILD_NUMBER}"
         }
-                                        
-    }
+     }
+   }                          
+ }
 }    
 
 
