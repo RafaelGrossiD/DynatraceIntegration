@@ -15,7 +15,7 @@ def dyna_json = """
   "entitySelector": "type(process_group_instance),tag(Jenkins)",
   "properties": {
     "Jenkins.JOB_NAME": "${env.JOB_NAME}",
-    "Jenkins.BUILD_NUMBER": "${env.BUILD_NUMBER}"
+    "Jenkins.BUILD_NUMBER": "${env.BUILD_NUMBER}",
     "dt.event.deployment.project": "Project CICD",
     "dt.event.deployment.remediation_action_link": "https://urlexample",
     "dt.event.deployment.version": "5.0",
