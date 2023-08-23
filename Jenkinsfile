@@ -20,7 +20,11 @@ def dyna_json = """
     "dt.event.deployment.remediation_action_link": "https://urlexample",
     "dt.event.deployment.version": "5.0",
     "dt.event.deployment.release_stage": "PRD", 
-    "dt.event.deployment.source": "Jenkins"
+    "dt.event.deployment.release_product": "Frontend",
+    "approver": "Rafael",
+    "gitcommit": "e5a6baac7eb",
+    "change-request": "CR-42",
+    "dt.event.is_rootcause_relevant": true
    }
 }
 """
